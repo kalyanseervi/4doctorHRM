@@ -1,0 +1,223 @@
+<div class="header" *ngIf="loggedUser">
+    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <span class="text-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="This top tooltip is themed via CSS variables."><i class="bi bi-box-arrow-right"></i>
+        </span></a>
+
+    <span class="text-light"><i class="bi bi-bell"></i> </span>
+    <span class="text-light"><i class="bi bi-envelope"></i></span>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-box-arrow-right"></i>
+        Logout</button>
+</div>
+<div class="container-fluid" *ngIf="loggedUser">
+    <!-- section for side navigation -->
+    <div class="container sidebar">
+        <!-- nav -->
+        <nav>
+            <ul class=" text-center">
+                <li>
+                    <div class="user-profile-image">
+                        <img src="https://static.vecteezy.com/system/resources/previews/035/173/639/non_2x/ai-generated-process-automation-software-monochrome-line-logo-user-centric-company-value-cute-baby-robot-simple-icon-design-element-ai-art-for-corporate-branding-vector.jpg"
+                            alt="user profile icon" srcset="">
+                        <!-- <img [src]="loggedUser.profileImageUrl" alt="user profile icon" srcset=""> -->
+                    </div>
+
+                    <div
+                        class="icon mb-4 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                        <h1 class="text-capitalize"> {{ loggedUser.user.name }}</h1>
+                    </div>
+
+
+                </li>
+                <li class="border border-primary m-2 rounded-3 ">
+
+                    <a>
+                        <div
+                            class=" fs-5 m-3 text-center  link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                            <i class="bi bi-person-lines-fill"></i> Profile
+                        </div>
+
+                    </a>
+                </li>
+                <li class="border border-primary m-2">
+                    <a>
+                        <div
+                            class=" fs-5 m-3 icon link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                            <i class="bi bi-bar-chart-fill"> </i> Dashboard
+                        </div>
+
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- section for router outlet -->
+    <div class="container main border border-dark ">
+        <div class="row text-center">
+            <div class="col ">
+                <h1 class="text-capitalize">Welcome, {{ loggedUser.user.name }} this Dashboard</h1>
+                <p>Email: {{ loggedUser.user.email }}</p>
+                <div class="col border border-dark bg-light bg-gradient d-flex justify-content-center ">
+                    <!-- <div class="row myfont">
+                        <div class="clock">
+                            <p class="value" id="hours">{{ hoursDisplay }}</p> :
+                            <p class="value" id="minutes">{{ minutesDisplay }}</p> :
+                            <div class="value seconds">
+                                <p id="seconds">{{ secondsDisplay }}</p>
+                                <p id="suffix">{{ suffix }}</p>
+                            </div>
+                        </div>
+
+                    </div> -->
+                    <!-- <div class="d-flex pt-3">
+                        <p class="fs-4" id="hours">{{ hoursDisplay }} : </p>
+                        <p class="fs-4" id="minutes"> &nbsp; {{ minutesDisplay }} : </p>
+                        <p class="fs-4" id="seconds"> &nbsp;{{ secondsDisplay }} </p>
+                        <p class="fs-4" id="suffix">{{ suffix }}</p>
+
+                    </div> -->
+                    <div class="" *ngIf="loggedUser">
+                        <h1>Welcome, {{ loggedUser.user.name }}</h1>
+                        <button type="button" class="btn btn-outline-success m-2 px-4 py-2" (click)="checkIn()">Check
+                            In</button>
+                        <button type="button" class="btn btn-outline-success m-2 px-4 py-2" (click)="checkOut()">Check
+                            Out</button>
+
+                        <!-- <button type="button" class="btn btn-outline-success  m-2  px-4 py-2 " (click)="checkIn()">Check In</button>
+                        <button type="button" class="btn btn-outline-success m-2  px-4 py-2" (click)="checkOut()">Check Out</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  w-100 h-100  text-center">
+            home
+        </div>
+
+        <div *ngIf="successMessage">{{ successMessage }}</div>
+        <div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+       
+
+        <div *ngIf="!loggedUser">
+            <p>Please log in to access the dashboard.</p>
+        </div>
+        <!-- {{ loggedUser | json }} -->
+        <router-outlet></router-outlet>
+        <!-- dashboard.component.html -->
+    </div>
+</div>
+
+<div class=" modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class=" modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-danger " id="exampleModalLabel">Logout</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p calss="text-danger">Confirm to logout ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                        class="bi bi-x-lg"></i>
+                    Close</button>
+                <button type="button" class="btn btn-danger" (click)="logout()"><i
+                        class="bi bi-box-arrow-right"></i>
+                    Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- new///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div class="header" *ngIf="loggedUser">
+    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <span class="text-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="This top tooltip is themed via CSS variables."><i class="bi bi-box-arrow-right"></i>
+        </span></a>
+
+    <span class="text-light"><i class="bi bi-bell"></i> </span>
+    <span class="text-light"><i class="bi bi-envelope"></i></span>
+    
+</div>
+<div class="container-fluid " *ngIf="loggedUser">
+    <!-- section for side navigation -->
+    <div class="container sidebar">
+        <!-- nav -->
+        <nav>
+            <ul class=" text-center">
+                <li>
+                    <div class="user-profile-image">
+                        <img src="https://png.pngtree.com/element_our/sm/20180415/sm_5ad342141dbc1.png"
+                            alt="user profile icon" srcset="">
+                            <!-- https://static.vecteezy.com/system/resources/previews/035/173/639/non_2x/ai-generated-process-automation-software-monochrome-line-logo-user-centric-company-value-cute-baby-robot-simple-icon-design-element-ai-art-for-corporate-branding-vector.jpg -->
+                    </div>
+                    <div
+                        class="icon mb-4 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                        <h1 class="text-capitalize"> </h1>
+                    </div>
+                </li>
+                <li class="border border-primary m-2 rounded-3 ">
+                    <a (click)="navigateTo('profile')">
+                        <div
+                            class=" fs-5 m-3 text-center  link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"  type="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+                            <i class="bi bi-person-lines-fill"></i> Profile
+                        </div>
+                    </a>
+                </li>
+                <li class="border border-primary m-2">
+                    <a (click)="navigateTo('analysis')">
+                        <div
+                            class=" fs-5 m-3 icon link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                            <i class="bi bi-bar-chart-fill"> </i> Analysis
+                        </div>
+                    </a>
+                </li>
+                <li class="border border-primary m-2">
+                    <a (click)="navigateTo('checkin')">
+                        <div
+                            class=" fs-5 m-3 icon link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                            <i class="bi bi-clock"></i> Check-in/Out
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- section for dynamic content -->
+    <div class="container  border border-white w-100 h-100">
+        
+        <ng-container [ngSwitch]="selectedPage">
+            <div *ngSwitchCase=" ">
+                <h1 class="text-capitalize">Welcome, {{ loggedUser.user.name }} to the Dashboard</h1>
+                <p>Email: {{ loggedUser.user.email }}</p>
+            </div>
+            <app-user-profile *ngSwitchCase="'profile'"></app-user-profile>
+            <app-user-analysis *ngSwitchCase="'analysis'"></app-user-analysis>
+            <app-checkinout *ngSwitchCase="'checkin'"></app-checkinout>
+        </ng-container>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Logout</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">Confirm to logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i>
+                    Close</button>
+                <button type="button" class="btn btn-danger" (click)="logout()"><i class="bi bi-box-arrow-right"></i>
+                    Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i -->
+    <!-- class="bi bi-box-arrow-right"></i> -->
+<!-- Logout</button> -->

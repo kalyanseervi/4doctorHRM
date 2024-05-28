@@ -1,0 +1,42 @@
+{
+  "name": "mena_pro",
+  "version": "1.0.0",
+  "description": "HRM Project By Jai Prakash",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "Mean",
+    "Stack",
+    "node",
+    "express"
+  ],
+  "author": "JaiPrakash",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@angular/cli": "^17.3.7",
+    "@canvasjs/angular-charts": "^1.2.0",
+    "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.6.1",
+    "mongoose": "^8.3.4",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "localstorage-polyfill": "^1.0.1",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
+  }
+}

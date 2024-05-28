@@ -1,0 +1,66 @@
+<!-- Corrected HTML code -->
+<!-- <p>signup works!</p> -->
+<div class="container pt-5 pb-5">
+
+    <div class="card">
+        <div class="card-header">
+            <h1>Sign Up</h1>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="userRegForm" (ngSubmit)="register()">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" class="form-control" minlength="4" required formControlName="name">
+                    </div>
+                    <div class="col-xl-6">
+                        <label for="jobTitle" class="form-label">Job Title:</label>
+                        <input type="text" class="form-control" minlength="2" required formControlName="jobTitle">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <label for="city" class="form-label">City:</label>
+                        <input type="text" class="form-control" formControlName="city">
+                    </div>
+                    <div class="col-xl-6">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" required formControlName="email">
+                    </div>
+                  
+                </div>
+                <div class="row">
+                    
+              
+
+                    <!-- <div class="col-xl-6">
+                        <label for="userImage" class="form-label">User Image:</label>
+                        <input type="file" class="form-control" required formControlName="userImage" id="userImage" (change)="onFileSelected($event)">
+                    </div> -->
+
+                    <div class="col-xl-6">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" required formControlName="password">
+                    </div>
+                  
+                    <div class="col-xl-6">
+                        <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                        <input type="password" class="form-control" required formControlName="confirmPassword">
+                    </div>
+                    <div class="col-xl-12">
+                        <label for="bio" class="form-label">Bio:</label>
+                        <input type="text" class="form-control" formControlName="bio">
+                    </div>
+
+                </div>
+                <div class="col-xl-12 mt-3">
+                    
+                    <button class="btn btn-primary float-end" type="submit"><i class="bi bi-box-arrow-in-left"></i> Sign Up</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

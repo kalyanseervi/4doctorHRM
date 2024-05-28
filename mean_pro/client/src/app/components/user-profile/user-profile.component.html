@@ -1,0 +1,116 @@
+<div class="container bg-white p-4 rounded shadow-lg m-2" *ngIf="loggedUser">
+  <h1 class="text-2xl font-bold mt-4 text-center">User Dashboard</h1>
+
+  <div class="row g-2 mb-2  mt-2">
+    <div class="col">
+      <!-- <div class="bg-light p-3 rounded text-center"> -->
+      <!-- <div *ngIf="loggedUser"> -->
+      <!-- <img src="https://www.hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png"
+                 alt="User Image" class="img-fluid rounded"> -->
+      <!-- <img [src]="loggedUser.user.userImage" alt="User Image" class="img-fluid rounded-circle" *ngIf="loggedUser"> -->
+      <!-- <img *ngIf="loggedUser.user.userImage" [src]="loggedUser.user.userImage" alt="User Image"> -->
+      <!-- </div>
+          <h2 class="h5 font-semibold text-uppercase fs-2 mt-3">{{ loggedUser.user.name }}</h2>
+          <div class="col">
+         
+          </div> -->
+      <!-- <div class="col text-capitalize fs-4">
+            <p>{{ loggedUser.user.email }}</p>
+          </div>
+          <p class="display-5 fw-bold"></p>
+          <p class="text-muted small"></p>
+        </div>
+      </div> -->
+
+      <div class="col  m-5">
+        <div class="bg-light p-3 rounded">
+          <div class="row border-bottom mt-2">
+            <div class="col">
+              <h2 class="h5 font-semibold mb-3 fs-5 text-uppercase">Name</h2>
+            </div>
+            <div class="col text-capitalize">
+              <p>{{ loggedUser.user.name }}</p>
+            </div>
+          </div>
+          <div class="row border-bottom mt-3">
+            <div class="col">
+              <h2 class="h5 font-semibold mb-3 text-uppercase">Job Title</h2>
+            </div>
+            <div class="col text-uppercase">
+              <p>{{ loggedUser.user.jobTitle }}</p>
+            </div>
+          </div>
+          <div class="row border-bottom mt-3">
+            <div class="col">
+              <h2 class="h5 font-semibold mb-3 text-uppercase">Email</h2>
+            </div>
+            <div class="col text-capitalize">
+              <p>{{ loggedUser.user.email }}</p>
+            </div>
+          </div>
+          <div class="row border-bottom mt-3">
+            <div class="col">
+              <h2 class="h5 font-semibold mb-3 text-uppercase">City</h2>
+            </div>
+            <div class="col text-capitalize">
+              <p>{{ loggedUser.user.city }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-uppercase  ">
+              <h2 class="h5 font-semibold">Bio</h2>
+              <div class="col text-capitalize overflow-y-auto  h-75">
+                <p>{{loggedUser.user.bio }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=" row g-3  d-flex justify-content-center " *ngIf="loggedUser">
+      <div class="row d-flex justify-content-end">
+        <div class=" col d-flex justify-content-end pt-2 ">
+          <p class="fs-4" id="hours">{{ hoursDisplay }} : </p>
+          <p class="fs-4" id="minutes"> &nbsp; {{ minutesDisplay }} : </p>
+          <p class="fs-4" id="seconds"> &nbsp;{{ secondsDisplay }} </p>
+          <p class="fs-4" id="suffix">{{ suffix }}</p>
+
+        </div>
+        <div class="col-3 ">
+          <button type="button" class="btn btn-outline-success m-2 px-4 py-2 w-30 " (click)="checkIn()">Check
+            In</button>
+          <button type="button" class="btn btn-outline-success m-2 px-4 py-2 w-30" (click)="checkOut()">Check
+            Out</button>
+        </div>
+      </div>
+      <div class=" ">
+        <table class="table table-hover ">
+          <thead class="my-3">
+            <tr>
+              <th scope="col">Ser. No</th>
+              <th scope="col">Check-In Date/Time </th>
+              <!-- <th scope="col">Check-In Time</th> -->
+              <th scope="col">Check-Out Date /Time</th>
+              <!-- <th scope="col">Check-Out Time</th> -->
+              <!-- <th scope="col">Total Time</th> -->
+            </tr>
+          </thead>
+          <tbody class="overflow-y-auto  h-25">
+            <tr *ngFor="let entry of checkInOutHistory; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ entry.checkInDateTime | date: 'short' }}</td>
+              <!-- <td>{{ entry.checkInTime | date: 'shortTime' }}</td> -->
+              <td>{{ entry.checkOutDateTime ? (entry.checkOutDateTime | date: 'short') : 'Active' }}</td>
+              <!-- <td>{{ entry.checkOutTime ? (entry.checkOutTime | date: 'shortTime') : 'Active' }}</td> -->
+              <!-- <td [ngClass]="{ 'text-danger': entry.error }">{{ entry.totalTimeWorked }}</td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="errorMessage">
+        <p>Error: {{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>

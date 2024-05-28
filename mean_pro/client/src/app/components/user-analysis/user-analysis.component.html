@@ -1,0 +1,55 @@
+<div class="container bg-white p-4 rounded shadow-lg my-5">
+  <h1 class="text-2xl font-bold mb-4">Check-In/Out Analysis Dashboard</h1>
+  
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+    <div class="col">
+      <div class="bg-light p-4 rounded">
+        <h2 class="h5 font-semibold">Average Check-Ins</h2>
+        <p class="display-6 fw-bold">{{ averageCheckIns.toFixed(2) }}<span class="text-success">↑</span></p>
+        <p class="text-muted">vs previous 30 days</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="bg-light p-4 rounded">
+        <h2 class="h5 font-semibold">Total Leave Days</h2>
+        <p class="display-6 fw-bold">{{ totalLeaveDays }}<span class="text-danger">↓</span></p>
+        <p class="text-muted">vs previous 30 days</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="bg-light p-4 rounded">
+        <h2 class="h5 font-semibold">Total Working Time</h2>
+        <p class="display-6 fw-bold">{{ totalWorkingTime.toFixed(2) }} hrs<span class="text-success">↑</span></p>
+        <p class="text-muted">vs previous 30 days</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="bg-light p-4 rounded">
+        <h2 class="h5 font-semibold">Total Days Joined</h2>
+        <p class="display-6 fw-bold">{{ totalDaysJoined }}<span class="text-success">↑</span></p>
+        <p class="text-muted">From joining to today</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day-wise check-in/out time chart -->
+  <div class="row g-4">
+    <div class="col-md-12">
+      <div class="bg-light p-4 rounded">
+        <h2 class="h5 font-semibold mb-4">Day-wise Check-in/Out Time Chart</h2>
+        <canvasjs-chart [options]="chartOptions" (chartInstance)="getChartInstance($event)"></canvasjs-chart>
+      </div>
+    </div>
+    <!-- Top long time working days -->
+    <!-- <div class="col-md-6">
+      <div class="bg-light p-4 rounded">
+        <h2 class="h5 font-semibold mb-4">Top Long Time Working Days</h2>
+        <img src="https://placehold.co/400x250" alt="Top Long Time Working Days" class="img-fluid rounded">
+      </div>
+    </div> -->
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-4">
+    {{ errorMessage }}
+  </div>
+</div>

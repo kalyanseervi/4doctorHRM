@@ -1,0 +1,101 @@
+<div class="header" *ngIf="loggedUser">
+    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <span class="text-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="This top tooltip is themed via CSS variables."><i class="bi bi-box-arrow-right"></i>
+        </span></a>
+
+    <span class="text-light"><i class="bi bi-bell"></i> </span>
+    <span class="text-light"><i class="bi bi-envelope"></i></span>
+
+</div>
+<div class="container-fluid " *ngIf="loggedUser">
+    <!-- section for side navigation -->
+    <div class="container sidebar">
+        <!-- nav -->
+        <nav>
+            <ul class=" text-center">
+                <li class="mt-4 mb-5">
+                    <div class="user-profile-image">
+                        <!-- here fatch the user Image from the mongodb  -->
+
+                        <img src="https://static.vecteezy.com/system/resources/previews/020/396/180/original/hrm-letter-logo-design-on-white-background-hrm-creative-circle-letter-logo-concept-hrm-letter-design-vector.jpg"
+                            alt="User Image" class=" rounded" style="height: 70px;">
+
+                    </div>
+                    <div
+                        class="icon mb-4 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                        <h1 class="text-capitalize"> </h1>
+                    </div>
+                </li>
+                <!-- <li class="border border-primary m-2">
+                    <a (click)="navigateTo('checkin')">
+                        <div
+                            class=" fs-5 m-3 icon link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                            <i class="bi bi-clock"></i> Check-in/Out
+                        </div>
+                    </a>
+                </li> -->
+                <li class="border border-primary m-2 rounded-3 ">
+                    <a (click)="navigateTo('profile')">
+                        <div class=" fs-5 m-3 text-center  link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                            type="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-content="Right popover">
+                            <i class="bi bi-person-lines-fill"></i> Profile
+                        </div>
+                    </a>
+                </li>
+                <li class="border border-primary m-2 rounded-3">
+                    <a (click)="navigateTo('analysis')">
+                        <div
+                            class=" fs-5 m-3 icon link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                            <i class="bi bi-bar-chart-fill"> </i> Analysis
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <!-- section for dynamic content -->
+    <div class="container mx-auto  border border-white w-100 h-100 m-5">
+
+        <ng-container [ngSwitch]="selectedPage">
+            <div *ngSwitchCase="'home'" class=" position-absolute top-50 start-50 translate-middle">
+
+                <h1 class="text-capitalize " style="font-size: 100px;">Hi, <img
+                        src="https://images.emojiterra.com/google/noto-emoji/unicode-15.1/color/1024px/1f44b.png" alt=""
+                        style=" height: 100px;"> {{ loggedUser.user.name }} </h1>
+                <P style="font-size: 70px;"> This is the Dashboard</P>
+                <p style="font-size: 20px;">Email: {{ loggedUser.user.email }}</p>
+            </div>
+
+            <app-user-profile *ngSwitchCase="'profile'"></app-user-profile>
+
+            <app-user-analysis *ngSwitchCase="'analysis'"></app-user-analysis>
+            <app-checkinout *ngSwitchCase="'checkin'"></app-checkinout>
+        </ng-container>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Logout</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">Confirm to logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i>
+                    Close</button>
+                <button type="button" class="btn btn-danger" (click)="logout()"><i class="bi bi-box-arrow-right"></i>
+                    Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i -->
+<!-- class="bi bi-box-arrow-right"></i> -->
+<!-- Logout</button> -->

@@ -1,0 +1,50 @@
+<!-- <p>login works!</p> -->
+<div class="containder-fluid login-section d-flex justify-content-center align-items-center">
+  <div class="card login-card ">
+
+    <!-- card header -->
+    <div class="card-header p-3     ">
+      Login
+    </div>
+    <!-- card body -->
+    <div class="card-body m-1">
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control p-2 mb-1 custom-placeholder" id="email" required
+            placeholder="exaple@gmail.com" formControlName="email">
+
+          <div *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched"
+            class="text-danger">
+            Email is required !
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="password" class="form-label mt-2 ">Password</label>
+          <input type="password" class="form-control p-2" id="password" formControlName="password" required
+            minlength="3">
+
+          <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched"
+            class="text-danger">
+            Password is required !
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <!-- card footer -->
+    <div class="card-footer pt-2 pb-2">
+         Go to the Signup
+      <div class="btn btn-primary float-end ">
+       
+        <button type="submit" class="btn btn-primary p-0 px-2" (click)="submit()"
+          [disabled]="!loginForm.valid">Login</button>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

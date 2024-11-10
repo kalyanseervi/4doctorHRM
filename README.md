@@ -1,4 +1,3 @@
-Here's a sample README file for your HRM project:
 
 ---
 
@@ -35,19 +34,19 @@ This project is a Human Resource Management (HRM) system built using the MEAN st
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/kalyanseervi/yourrepo.git
-    cd yourrepo
+    git clone https://github.com/kalyanseervi/Human-Resource-Management-HRM--MEAN-stack.git
+    cd mean_pro
     ```
 
 2. **Install backend dependencies**:
     ```bash
-    cd backend
+    cd server
     npm install
     ```
 
 3. **Install frontend dependencies**:
     ```bash
-    cd ../frontend
+    cd ../client
     npm install
     ```
 
@@ -62,12 +61,12 @@ This project is a Human Resource Management (HRM) system built using the MEAN st
 5. **Run the application**:
     - Start the backend server:
       ```bash
-      cd backend
+      cd server
       npm start
       ```
     - Start the frontend server:
       ```bash
-      cd ../frontend
+      cd ../client
       ng serve
       ```
     - The backend will run on `http://localhost:3000` and the frontend on `http://localhost:4200`.
@@ -103,8 +102,6 @@ This project is a Human Resource Management (HRM) system built using the MEAN st
 
 Feel free to fork this repository, create a branch, and submit a pull request if you'd like to contribute to this project.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 --- 
